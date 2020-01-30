@@ -71,8 +71,41 @@ public class Logic {
     public boolean isWin() {
         int[][] table = this.convert();
         boolean result = false;
+        if (winVertical(table) || winHorizontal(table)) {
+            result = true;
+        }
         return result;
     }
+    public  boolean winHorizontal(int[][] table) {
+        boolean result = false;
+        for (int row = 0; row < table.length; row++) {
+            int counter = 0;
+            for (int i = 0; i < table[row].length; i++) {
+                if (table[row][i] == 1) {
+                    counter++;
+                    if (counter == table[row].length) {
+                        result = true;
+                    }
+                }
+            }
+        }
+        return result;
+    }
+    public  boolean winVertical(int[][] table) {
+        boolean result = false;
+        for (int column = 0; column < table.length; column++) {
+            int counter = 0;
+            for (int i = 0; i < table.length; i++) {
+                if (table[i][column] == 1) {
+                    counter++;
+                    if (counter == table.length) {
+                        result = true;
+                    }
+                }
+            }
+        }
+        return result;   }
+
 
     public int[][] convert() {
         int[][] table = new int[this.size][this.size];
